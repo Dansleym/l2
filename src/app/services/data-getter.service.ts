@@ -29,7 +29,23 @@ export class DataGetterService {
     },
   ];
 
+  private userName = "";
+
+  private users = ["Illay", "Anna", "Egor", "Alla"];
+
   constructor() {}
+
+  getUser() {
+    return this.userName;
+  }
+
+  setUser(name: string) {
+    this.userName = name;
+  }
+
+  userExists(name: string): boolean {
+    return this.users.indexOf(name) !== -1;
+  }
 
   getAkatsuki(): Observable<AkatsukiList[]> {
     return of(this.akatsuki);

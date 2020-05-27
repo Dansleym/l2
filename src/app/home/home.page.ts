@@ -10,6 +10,7 @@ import {
   styleUrls: ["home.page.scss"],
 })
 export class HomePage {
+  userName: string;
   persons: AkatsukiList[];
 
   showNew = false;
@@ -19,6 +20,7 @@ export class HomePage {
     this.dataGetter.getAkatsuki().subscribe((data) => {
       this.persons = data;
     });
+    this.userName = this.dataGetter.getUser();
   }
 
   add() {
