@@ -21,6 +21,7 @@ export class AkatsukiListComponent implements OnInit {
         name: "",
         rank: "",
         age: null,
+        acod: null,
       };
       this.title = "New list";
     }

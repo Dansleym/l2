@@ -45,7 +45,19 @@
           <ion-label>{{person.name}}</ion-label>
           <ion-note slot="end">{{person.rank}}</ion-note>
         </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option
+            color="secondary"
+            routerLink="/skills/{{person.acod}}"
+            routerDirection="forward"
+          >
+            <ion-icon name="flash-outline"></ion-icon>
+            Skills
+          </ion-item-option>
+        </ion-item-options>
       </ion-item-sliding>
+
       <app-akatsuki-list
         *ngIf="showEdit==i"
         [isNew]="false"
@@ -53,4 +65,7 @@
       ></app-akatsuki-list>
     </div>
   </ion-list>
+  <ion-item text-center>
+    <ion-label color="primary">massege: {{dataFromSkills}}</ion-label>
+  </ion-item>
 </ion-content>

@@ -5,6 +5,7 @@ export interface AkatsukiList {
   name: string;
   rank: string;
   age: number;
+  acod: number;
 }
 
 @Injectable({
@@ -16,17 +17,31 @@ export class DataGetterService {
       name: "Hidan",
       rank: "A",
       age: 40,
+      acod: 1,
     },
     {
       name: "Tobi",
       rank: "S",
       age: 29,
+      acod: 3,
     },
     {
       name: "Sasori",
       rank: "B",
       age: 30,
+      acod: 2,
     },
+  ];
+
+  private skills = [
+    { cod: 1, sname: "nimpo", style: "wind" },
+    { cod: 1, sname: "rassengun", style: "wind" },
+    { cod: 2, sname: "shadowclone", style: "earth" },
+    { cod: 1, sname: "amaterasu", style: "fire" },
+    { cod: 2, sname: "frogthroat", style: "water" },
+    { cod: 3, sname: "frogroom", style: "water" },
+    { cod: 3, sname: "chidori", style: "sunder" },
+    { cod: 3, sname: "shuringun", style: "earth" },
   ];
 
   private userName = "";
@@ -57,5 +72,13 @@ export class DataGetterService {
 
   delAkatsuki(id) {
     this.akatsuki.splice(id, 1);
+  }
+
+  getSkills(cod: number): Observable<any[]> {
+    return of(
+      this.skills.filter((elem) => {
+        return elem.cod === cod;
+      })
+    );
   }
 }

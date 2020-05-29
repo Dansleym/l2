@@ -3,6 +3,7 @@ import {
   DataGetterService,
   AkatsukiList,
 } from "../services/data-getter.service";
+import { SharedDataService } from "../services/shared-data.service";
 
 @Component({
   selector: "app-home",
@@ -12,11 +13,15 @@ import {
 export class HomePage {
   userName: string;
   persons: AkatsukiList[];
+  dataFromSkills = "";
 
   showNew = false;
   showEdit = -1;
 
-  constructor(private dataGetter: DataGetterService) {
+  constructor(
+    private dataGetter: DataGetterService,
+    private sharedData: SharedDataService
+  ) {
     this.dataGetter.getAkatsuki().subscribe((data) => {
       this.persons = data;
     });
@@ -32,5 +37,10 @@ export class HomePage {
   }
   delete(id: number) {
     this.dataGetter.delAkatsuki(id);
+  }
+  ionViewDidEnter() {
+    if (this.sharedData.getTextData() != "") {
+      this.dataFromSkills = this.sharedData.getTextData();
+    }
   }
 }
