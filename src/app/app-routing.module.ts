@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
-  { path: "", redirectTo: "test-http", pathMatch: "full" },
+  { path: "", redirectTo: "login", pathMatch: "full" },
   {
     path: "home",
     loadChildren: () =>
